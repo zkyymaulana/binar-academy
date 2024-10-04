@@ -1,67 +1,80 @@
 [
-	{
-		"id": 1,
-		"name": "David Vincent Gurning",
-		"nickName": "David",
-		"class": "FSW-1",
-		"address": {
-			"province": "North Sumatera",
-			"city": "Medan"
-		},
-		"education": {
-			"bachelor": "Universitas Teknologi Del"
-		}
-	},
-	{
-		"id": 2,
-		"name": "Yudriqul Aulia",
-		"nickName": "Yudi",
-		"class": "FSW-1",
-		"address": {
-			"province": "Jambi",
-			"city": "Jambi"
-		},
-		"education": {
-			"bachelor": "Universitas Jember"
-		}
-	},
-	{
-		"id": 3,
-		"name": "Iko Indra Gunawan",
-		"nickName": "Iko",
-		"class": "FSW-1",
-		"address": {
-			"province": "East Java",
-			"city": "Surabaya"
-		},
-		"education": {
-			"bachelor": "UPN Veteran Jawa Timur"
-		}
-	},
-	{
-		"id": 4,
-		"name": "Arswendo Erza Saweda",
-		"nickName": "Erza",
-		"class": "FSW-1",
-		"address": {
-			"province": "Lampung",
-			"city": "Lampung"
-		},
-		"education": {
-			"bachelor": "UPN Veteran Jawa Timur"
-		}
-	},
-	{
-		"id": 5,
-		"name": "M. Zaky Pria Maulana",
-		"nickName": "Zaky",
-		"class": "FSW-1",
-		"address": {
-			"province": "East Java",
-			"city": "Kediri"
-		},
-		"education": {
-			"bachelor": "UPN Veteran Jawa Timur"
-		}
-	}
+    {
+        "id": 2,
+        "name": "John Doe",
+        "nickName": "Johnny",
+        "class": "10",
+        "address": {
+            "province": "East Java",
+            "city": "Surabaya"
+        },
+        "education": {
+            "bachelor": "Computer Science"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Iko Indra Gunawan",
+        "nickName": "Iko",
+        "class": "FSW-1",
+        "address": {
+            "province": "East Java",
+            "city": "Surabaya"
+        },
+        "education": {
+            "bachelor": "UPN Veteran East Java"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Dhiya Ul Faruq",
+        "nickName": "Faruq",
+        "class": "FSW-1",
+        "address": {
+            "province": "East Java",
+            "city": "Jember"
+        },
+        "education": {
+            "bachelor": "Universitas Jember"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Muhammad Ferdy Alviansyah",
+        "nickName": "Ferdy",
+        "class": "FSW-1",
+        "address": {
+            "province": "Jambi",
+            "city": "Jambi"
+        },
+        "education": {
+            "bachelor": "Universitas Jambi"
+        }
+    },
+    {
+        "id": 9,
+        "name": "ashfjiodafha",
+        "nickName": "jshfd",
+        "class": "FSW-1",
+        "address": {
+            "province": "East Java",
+            "city": "Kediri"
+        },
+        "education": {
+            "bachelor": "UPN Veteran Jawa Timur"
+        }
+    },
+    {
+        "id": 10,
+        "name": "ashfjiodafha",
+        "nickName": "jshfd",
+        "class": "FSW-1",
+        "address": {
+            "province": "East Java",
+            "city": "Kediri"
+        },
+        "education": {
+            "bachelor": "UPN Veteran Jawa Timur"
+        }
+    }
 ]
