@@ -1,15 +1,15 @@
 [
     {
-        "id": 2,
-        "name": "John Doe",
-        "nickName": "Johnny",
-        "class": "10",
+        "id": 1,
+        "name": "David Vincent Gurning",
+        "nickName": "David",
+        "class": "FSW-1",
         "address": {
-            "province": "East Java",
-            "city": "Surabaya"
+            "province": "North Sumatera",
+            "city": "Medan"
         },
         "education": {
-            "bachelor": "Computer Science"
+            "bachelor": "Universitas Teknologi Del"
         }
     },
     {
@@ -39,9 +39,22 @@
         }
     },
     {
-        "id": 8,
-        "name": "Muhammad Ferdy Alviansyah",
-        "nickName": "Ferdy",
+        "id": 5,
+        "name": "Fariq Abdhe Manaf",
+        "nickName": "Fariq",
+        "class": "FSW-1",
+        "address": {
+            "province": "East Java",
+            "city": "Jember"
+        },
+        "education": {
+            "bachelor": "Universitas Jember"
+        }
+    },
+    {
+        "id": 9,
+        "name": "Nabilah Zakiyah",
+        "nickName": "Zaki",
         "class": "FSW-1",
         "address": {
             "province": "Jambi",
@@ -49,32 +62,6 @@
         },
         "education": {
             "bachelor": "Universitas Jambi"
-        }
-    },
-    {
-        "id": 9,
-        "name": "ashfjiodafha",
-        "nickName": "jshfd",
-        "class": "FSW-1",
-        "address": {
-            "province": "East Java",
-            "city": "Kediri"
-        },
-        "education": {
-            "bachelor": "UPN Veteran Jawa Timur"
-        }
-    },
-    {
-        "id": 10,
-        "name": "ashfjiodafha",
-        "nickName": "jshfd",
-        "class": "FSW-1",
-        "address": {
-            "province": "East Java",
-            "city": "Kediri"
-        },
-        "education": {
-            "bachelor": "UPN Veteran Jawa Timur"
         }
     }
 ]
