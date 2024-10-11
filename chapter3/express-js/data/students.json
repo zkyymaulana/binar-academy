@@ -13,19 +13,6 @@
         }
     },
     {
-        "id": 3,
-        "name": "Iko Indra Gunawan",
-        "nickName": "Iko",
-        "class": "FSW-1",
-        "address": {
-            "province": "East Java",
-            "city": "Surabaya"
-        },
-        "education": {
-            "bachelor": "UPN Veteran East Java"
-        }
-    },
-    {
         "id": 4,
         "name": "Dhiya Ul Faruq",
         "nickName": "Faruq",
@@ -52,16 +39,57 @@
         }
     },
     {
-        "id": 9,
-        "name": "Nabilah Zakiyah",
-        "nickName": "Zaki",
-        "class": "FSW-1",
+        "name": "Johnson ",
+        "nickName": "Johnny",
+        "class": "10",
         "address": {
-            "province": "Jambi",
-            "city": "Jambi"
+            "province": "East Java",
+            "city": "Surabaya"
         },
         "education": {
-            "bachelor": "Universitas Jambi"
+            "bachelor": "Computer Science"
+        },
+        "id": 7
+    },
+    {
+        "id": 9,
+        "name": "Johnsosafhosn ",
+        "nickName": "Johnny",
+        "class": "10",
+        "address": {
+            "province": "East Java",
+            "city": "Surabaya"
+        },
+        "education": {
+            "bachelor": "Computer Science"
         }
+    },
+    {
+        "id": 10,
+        "name": "Ilham Firmansyah",
+        "nickName": "ilham",
+        "class": "FSW-3",
+        "address": {
+            "province": "Jawa Timur",
+            "city": "Sidoarjo"
+        },
+        "education": {
+            "bachelor": "UPN Veteran Jawa Timur"
+        },
+        "profilePicture": "https://ik.imagekit.io/c0ohadsxv/alphard_MLTXLbk3A.jpeg"
+    },
+    {
+        "id": 11,
+        "name": "Imam Nur R",
+        "nickName": "Imam",
+        "class": "HUKUM",
+        "address": {
+            "province": "Jawa Timur",
+            "city": "Surabaya"
+        },
+        "education": {
+            "bachelor": "UPNVJT"
+        },
+        "profilePicture": "https://ik.imagekit.io/c0ohadsxv/dep._kaderisasi__2__ScgrWjQS-.png"
     }
 ]

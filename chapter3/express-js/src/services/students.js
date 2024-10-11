@@ -1,51 +1,70 @@
-const studentRepository = require("../repositories/students");
-const { NotFoundError, InternalServerError } = require("../utils/request");
+const studentRepository = require('../repositories/students');
+const { imageUpload } = require('../utils/image-kit');
+const { NotFoundError, InternalServerError } = require('../utils/request');
 
 exports.getStudents = (name, nickName, bachelor) => {
-    return studentRepository.getStudents(name, nickName, bachelor);
+	return studentRepository.getStudents(name, nickName, bachelor);
 };
 
-exports.getStudentById = (id) => {
-    const student = studentRepository.getStudentById(id);
-    if (student) {
-        throw new NotFoundError("Student is Not Found!");
-    }
+exports.getStudentById = id => {
+	const student = studentRepository.getStudentById(id);
 
-    return student;
+	if (!student) {
+		throw new NotFoundError('Student is Not Found!');
+	}
+
+	return student;
 };
 
-exports.createStudent = (data) => {
-    return studentRepository.createStudent(data);
+exports.createStudent = async (data, file) => {
+	// Upload file to image kit
+	if (file?.profilePicture) {
+		data.profilePicture = await imageUpload(file.profilePicture);
+	}
+
+	// Create the data
+	return studentRepository.createStudent(data);
 };
 
-exports.updateStudent = (id, data) => {
-    // find student is exist or not (validate the data)
-    const existingStudent = studentRepository.getStudentById(id);
-    if (!existingStudent) {
-        throw new NotFoundError("Student is Not Found!");
-    }
+exports.updateStudent = async (id, data, file) => {
+	// Cek apakah siswa ada
+	const existingStudent = studentRepository.getStudentById(id);
+	if (!existingStudent) {
+		throw new NotFoundError('Student is Not Found!');
+	}
 
-    // if exist, we will delete the student data
-    const updatedStudent = studentRepository.updateStudent(id, data);
-    if (!updatedStudent) {
-        throw new InternalServerError(["Failed to update student!"]);
-    }
+	// replicated existing data with new data
+	data = {
+		...existingStudent,
+		...data,
+	};
 
-    return updatedStudent;
+	// Upload file to image kit
+	if (file?.profilePicture) {
+		data.profilePicture = await imageUpload(file.profilePicture);
+	}
+
+	// Perbarui data siswa
+	const updatedStudent = studentRepository.updateStudent(id, data);
+	if (!updatedStudent) {
+		throw new InternalServerError(['Failed to update student!']);
+	}
+
+	return updatedStudent;
 };
 
-exports.deleteStudentById = (id) => {
-    // find student is exist or not (validate the data)
-    const existingStudent = studentRepository.getStudentById(id);
-    if (!existingStudent) {
-        throw new NotFoundError("Student is Not Found!");
-    }
+exports.deleteStudentById = id => {
+	// find student is exist or not (validate the data)
+	const existingStudent = studentRepository.getStudentById(id);
+	if (!existingStudent) {
+		throw new NotFoundError('Student is Not Found!');
+	}
 
-    // if exist, we will delete the student data
-    const deletedStudent = studentRepository.deleteStudentById(id);
-    if (!deletedStudent) {
-        throw new InternalServerError(["Failed to delete student!"]);
-    }
+	// if exist, we will delete the student data
+	const deletedStudent = studentRepository.deleteStudentById(id);
+	if (!deletedStudent) {
+		throw new InternalServerError(['Failed to delete student!']);
+	}
 
-    return deletedStudent;
+	return deletedStudent;
 };
