@@ -4,7 +4,7 @@ const { BadRequestError } = require('../utils/request');
 exports.validateGetStudents = (req, res, next) => {
 	// Validate the query
 	const validateQuery = z.object({
-		name: z.string(),
+		name: z.string().optional(),
 		nickName: z.string().optional(),
 		bachelor: z.string().optional(),
 	});
