@@ -4,9 +4,8 @@ const { BadRequestError } = require('../utils/request');
 exports.validateGetStudents = (req, res, next) => {
 	// Validate the query
 	const validateQuery = z.object({
-		name: z.string().optional(),
-		nickName: z.string().optional(),
-		bachelor: z.string().optional(),
+		name: z.string().optional().nullable(),
+		nick_name: z.string().optional().nullable(),
 	});
 
 	const resultValidateQuery = validateQuery.safeParse(req.query);
@@ -85,15 +84,15 @@ exports.validateUpdateStudent = (req, res, next) => {
 		throw new BadRequestError(resultValidateParams.error.errors);
 	}
 
-	// Validation body schema, mirroring create
+	// Validation body schema
 	const validateBody = z.object({
 		name: z.string(),
-		nick_name: z.string(), // Konsisten dengan create
+		nick_name: z.string(),
 		class_id: z.string(),
 		university_id: z.string(),
 	});
 
-	// File validation is not required, just like in create
+	// The file is not required
 	const validateFileBody = z
 		.object({
 			profile_picture: z
@@ -107,14 +106,14 @@ exports.validateUpdateStudent = (req, res, next) => {
 		.nullable()
 		.optional();
 
-	// Validate request body
+	// Validate
 	const resultValidateBody = validateBody.safeParse(req.body);
 	if (!resultValidateBody.success) {
 		// If validation fails, return error messages
 		throw new BadRequestError(resultValidateBody.error.errors);
 	}
 
-	// Validate files if present
+	// Validate
 	const resultValidateFiles = validateFileBody.safeParse(req.files);
 	if (!resultValidateFiles.success) {
 		// If validation fails, return error messages
@@ -125,15 +124,15 @@ exports.validateUpdateStudent = (req, res, next) => {
 };
 
 exports.validateDeleteStudentById = (req, res, next) => {
-	// Validasi parameter ID menggunakan zod, mirip dengan validateUpdateStudent
+	// Make a validation schema
 	const validateParams = z.object({
 		id: z.string(),
 	});
 
-	const resultValidateParams = validateParams.safeParse(req.params);
-	if (!resultValidateParams.success) {
-		// Jika validasi gagal, kembalikan pesan error
-		throw new BadRequestError(resultValidateParams.error.errors);
+	const result = validateParams.safeParse(req.params);
+	if (!result.success) {
+		// If validation fails, return error messages
+		throw new BadRequestError(result.error.errors);
 	}
 
 	next();

@@ -1,7 +1,5 @@
-const fs = require('fs');
 const { PrismaClient } = require('@prisma/client');
 const JSONBigInt = require('json-bigint');
-const students = require('../../data/students.json');
 
 const prisma = new PrismaClient();
 
@@ -47,6 +45,10 @@ exports.getStudentById = async id => {
 		where: {
 			id: id,
 		},
+		include: {
+			classes: true,
+			universities: true,
+		},
 	});
 
 	// Convert BigInt fields to string for safe serialization
@@ -57,6 +59,10 @@ exports.getStudentById = async id => {
 exports.createStudent = async data => {
 	const newStudent = await prisma.students.create({
 		data,
+		include: {
+			classes: true,
+			universities: true,
+		},
 	});
 
 	// Convert BigInt fields to string for safe serialization
@@ -65,50 +71,30 @@ exports.createStudent = async data => {
 };
 
 exports.updateStudent = async (id, data) => {
-	// Check if the student exists
-	const student = await prisma.students.findFirst({
-		where: {
-			id: id,
-		},
-	});
-	if (!student) {
-		// If student not found, throw error
-		throw new NotFoundError('Student is Not Found!');
-	}
-
-	// Update student using Prisma
 	const updatedStudent = await prisma.students.update({
-		where: {
-			id: id,
+		where: { id },
+		include: {
+			classes: true,
+			universities: true,
 		},
 		data,
 	});
 
 	// Convert BigInt fields to string for safe serialization
-	const serializedStudent = JSONBigInt.stringify(updatedStudent);
-	return JSONBigInt.parse(serializedStudent);
+	const serializedStudents = JSONBigInt.stringify(updatedStudent);
+	return JSONBigInt.parse(serializedStudents);
 };
 
 exports.deleteStudentById = async id => {
-	// Check if the student exists
-	const student = await prisma.students.findFirst({
-		where: {
-			id: id,
-		},
-	});
-	if (!student) {
-		// If student not found, throw error
-		throw new NotFoundError('Student is Not Found!');
-	}
-
-	// Delete student using Prisma
 	const deletedStudent = await prisma.students.delete({
-		where: {
-			id: id,
+		where: { id },
+		include: {
+			classes: true,
+			universities: true,
 		},
 	});
 
 	// Convert BigInt fields to string for safe serialization
-	const serializedStudent = JSONBigInt.stringify(deletedStudent);
-	return JSONBigInt.parse(serializedStudent);
+	const serializedStudents = JSONBigInt.stringify(deletedStudent);
+	return JSONBigInt.parse(serializedStudents);
 };
