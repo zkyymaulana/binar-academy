@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import { getStudents } from '../service/student';
+import StudentItem from '../components/Student/StudentItem';
 
 export const Route = createLazyFileRoute('/')({
 	component: Index,
@@ -15,13 +14,16 @@ function Index() {
 	const { token } = useSelector(state => state.auth);
 
 	const [students, setStudents] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const getStudentData = async () => {
+			setIsLoading(true);
 			const result = await getStudents();
 			if (result.success) {
 				setStudents(result.data);
 			}
+			setIsLoading(false);
 		};
 
 		if (token) {
@@ -29,27 +31,23 @@ function Index() {
 		}
 	}, [token]);
 
-	return (
-		<Row className="mt-4 g-4">
-			{!token && (
+	if (!token) {
+		return (
+			<Row className="mt-4">
 				<Col>
 					<h1 className="text-center">Please login first to get student data!</h1>
 				</Col>
-			)}
+			</Row>
+		);
+	}
 
-			{students.length > 0 &&
-				students.map(student => (
-					<Col key={student.id} md={4}>
-						<Card style={{ width: '18rem', height: '100%' }}>
-							<Card.Img variant="top" src={student.profile_picture} style={{ height: '280px', objectFit: 'cover' }} />
-							<Card.Body>
-								<Card.Title>{student?.name}</Card.Title>
-								<Card.Text>{student?.nick_name}</Card.Text>
-								<Button variant="primary">Detail Student</Button>
-							</Card.Body>
-						</Card>
-					</Col>
-				))}
-		</Row>
-	);
+	if (isLoading) {
+		return (
+			<Row className="mt-4">
+				<h1>Loading...</h1>
+			</Row>
+		);
+	}
+
+	return <Row className="mt-4">{students.length === 0 ? <h1>Student data is not found!</h1> : students.map(student => <StudentItem student={student} key={student?.id} />)}</Row>;
 }
